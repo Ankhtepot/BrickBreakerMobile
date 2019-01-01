@@ -161,9 +161,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 169657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509b2500aa2501742a0c2e167839dece, type: 3}
+  m_Script: {fileID: 11500000, guid: e139235ad9be21541bc20db100e81409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SL: {fileID: 0}
 --- !u!114 &169660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 169659}
-        m_MethodName: OnPlayAgainButtonClick
+        m_MethodName: OnCreditsButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1685,8 +1686,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -5,11 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class CreditsButton : MonoBehaviour {
 
-	public void OnCreditsButtonClick() {
-        SceneLoader SL = FindObjectOfType<SceneLoader>();
-        if (SL) SL.ManageCreditsSceneView();
-        else {
+    [SerializeField] SceneLoader SL;
+
+    private void Start() {
+        SL = FindObjectOfType<SceneLoader>();
+    }
+
+    public void OnCreditsButtonClick() {
+        if (SL) SL.LoadCreditsScene();
+        else if(!SL){
             print("CreditsButton: OnCreditButtonClick: SceneLoader not found");
+        }
+    }
+
+    public void OnReturnToGameButtonClick() {
+        if (SL) SL.LoadFirstScene();
+        else if (!SL) {
+            print("CreditsButton: OnReturnToGameButtonClick: SceneLoader not found");
         }
     }
 }

@@ -97,6 +97,10 @@ public class Options : MonoBehaviour {
         return scoreList;
     }
 
+    public void SetScoreItems(List<ScoreItem> scoreList) {
+        this.scoreList = scoreList;
+    }
+
     private void OnDisable() {
         SceneManager.sceneLoaded -= OnScreenLoad;
     }

@@ -15,9 +15,9 @@ public class SceneLoader : MonoBehaviour {
     [SerializeField] public int SceneToBeLoaded;
     [SerializeField] public float SplashScreenDelay = 2f;
     [SerializeField] public float SplScrProlongOffset = 0.75f;
+    [SerializeField] int creditsSceneNr;
 
     //Caches
-    [SerializeField] Button continueButton;
     Animator splashScreen;
     Options options;
     List<string> notLevelScenes = new List<string> {
@@ -33,7 +33,7 @@ public class SceneLoader : MonoBehaviour {
         if (splashScreen) splashScreen = FindObjectOfType<SplashScreen>().GetComponent<Animator>();
         SFXPlayer = FindObjectOfType<SoundSystem>();
         options = FindObjectOfType<Options>();
-        //ManageContinueButtonText();
+        creditsSceneNr = SceneIndexFromName(scenes.CREDITS);
     }
 
     public void LoadScene() {
@@ -70,15 +70,14 @@ public class SceneLoader : MonoBehaviour {
         LoadScene(gameOverSceneNr);
     }
 
-    public void ManageCreditsSceneView() {
-        Scene currentScreen = SceneManager.GetActiveScene();
-        int creditsSceneNr = SceneIndexFromName(scenes.CREDITS);
-        //print("SceneLoader/ManageCreditsSceneView: creditsSceneNr: " + creditsSceneNr);
-        if (currentScreen.name != scenes.CREDITS) {
-            sceneToReturnTo = currentScreen.buildIndex;
+    public void LoadCreditsScene() {
+        //Scene currentScreen = SceneManager.GetActiveScene();
+        ////print("SceneLoader/ManageCreditsSceneView: creditsSceneNr: " + creditsSceneNr);
+        //if (currentScreen.name != scenes.CREDITS) {
+        //    sceneToReturnTo = currentScreen.buildIndex;
             LoadScene(creditsSceneNr);
-        } else if (currentScreen.name == scenes.CREDITS)
-            LoadScene(sceneToReturnTo);
+        //} else if (currentScreen.name == scenes.CREDITS)
+        //    LoadScene(sceneToReturnTo);
     }
 
     public bool isCurrentSceneLevel() {
@@ -90,17 +89,7 @@ public class SceneLoader : MonoBehaviour {
         //print("SceneLoader: scene buildIndex: " + SceneManager.GetActiveScene().buildIndex + " loaded. SceneLoader Hash: " + this.GetHashCode());
         ChooseMusicByScene();
         RunSplashScreen();
-        //ManageContinueButtonText();
-        //AssignContinueButton();
     }
-
-    //private void AssignContinueButton() {
-    //    if(SceneManager.GetActiveScene().buildIndex == 0 && continueButton == null) {
-    //        //print("SceneLoader/AssignContinueButton: assigning button");
-    //        continueButton = GameObject.Find(gameobjects.CONTINUE_BUTTON).GetComponent<Button>();
-    //        continueButton.onClick.AddListener(ContinueButtonClick);
-    //    }
-    //}
 
     private void ChooseMusicByScene() {
         if (SFXPlayer) {
@@ -119,23 +108,6 @@ public class SceneLoader : MonoBehaviour {
             } else splashScreen.SetTrigger(triggers.FADE);
         } else print("SceneLoader/OnSceneLoad: No splashScreen found");
     }
-
-
-
-    //public void ContinueButtonClick() {
-
-    //    int targetLevel = 1;
-    //    if (options) {
-    //        //print("SceneLoader/ContinueButtonClick: HighestLevel is: " + options.HighestLevel);
-    //        switch (options.HighestLevel) {
-    //            case -1: case 0: case 1: targetLevel = intconstants.FIRSTLEVEL; break;
-    //            case intconstants.MRBRICKWORM:
-    //                targetLevel = sceneIndexFromName(scenes.MRBRICKWORMLEVEL); break;
-    //            default: targetLevel = options.HighestLevel; break;
-    //        }
-    //    } else if (!options) print("SceneLoader/ContinueButtonClick: missing options");
-    //    LoadScene(targetLevel);
-    //}
 
     IEnumerator DelaySplScrFade() {
         //print("SceneLoader: DelaySplScrFade - start ");

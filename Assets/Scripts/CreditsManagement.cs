@@ -17,37 +17,37 @@ public class CreditsManagement : MonoBehaviour {
     }
 
     public void ExpandGraphics() {
-        print("Showing graphics");
+        //print("Showing graphics");
         if (animator) animator.SetBool(triggers.SHOW_GRAPHICS, true);
         else print("CreditsManagement: animator not found");
     }
 
     public void CollapseGraphics() {
-        print("Collapsing graphics");
+        //print("Collapsing graphics");
         if (animator) animator.SetBool(triggers.SHOW_GRAPHICS, false);
         else print("CreditsManagement: animator not found");
     }
 
     public void ExpandRest() {
-        print("Showing rest");
+        //print("Showing rest");
         if (animator) animator.SetBool(triggers.SHOW_REST, true);
         else print("CreditsManagement: animator not found");
     }
 
     public void CollapseRest() {
-        print("Collapsing rest");
+        //print("Collapsing rest");
         if (animator) animator.SetBool(triggers.SHOW_REST, false);
         else print("CreditsManagement: animator not found");
     }
 
     public void ExpandAudio() {
-        print("Showing audio");
+        //print("Showing audio");
         if (animator) animator.SetBool(triggers.SHOW_AUDIO, true);
         else print("CreditsManagement: animator not found");
     }
 
     public void CollapseAudio() {
-        print("Collapsing audio");
+        //print("Collapsing audio");
         if (animator) animator.SetBool(triggers.SHOW_AUDIO, false);
         else print("CreditsManagement: animator not found");
     }

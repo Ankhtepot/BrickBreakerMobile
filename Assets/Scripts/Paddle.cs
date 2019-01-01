@@ -11,6 +11,7 @@ public class Paddle : MonoBehaviour {
     [SerializeField] bool autoPlay = false;
     [SerializeField] float ZTransformPosition = -5f;    
     [SerializeField] float movementDirection;
+    [SerializeField] bool spaceForMovingTouched;
 
     //cached variables
     float mouseXInWU;
@@ -29,14 +30,16 @@ public class Paddle : MonoBehaviour {
         if (gameSession && gameSession.inputIsEnabled) {
             if (autoPlay) {
                 Autoplay();
-            } else {
-                //MoveWithMouse();
+            } else if(spaceForMovingTouched) {
+                MoveWithMouse();
             }
             RegisterMovementOnX(); 
         }
     }    
 
-    
+    public void SetSpaceForMovingTouched(bool state) {
+        spaceForMovingTouched = state;
+    }
 
     private void RegisterMovementOnX() {
         if (xPos != transform.position.x) movementDirection = transform.position.x - xPos;
