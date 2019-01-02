@@ -684,6 +684,26 @@ PrefabInstance:
       propertyPath: MouseLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1002882692}
+    - target: {fileID: 114606186631560860, guid: 847876c66cdaa2b498490729f9f9bb71,
+        type: 3}
+      propertyPath: MouseOver.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExpandScores
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606186631560860, guid: 847876c66cdaa2b498490729f9f9bb71,
+        type: 3}
+      propertyPath: MouseOver.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606186631560860, guid: 847876c66cdaa2b498490729f9f9bb71,
+        type: 3}
+      propertyPath: MouseLeave.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CollapseScores
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606186631560860, guid: 847876c66cdaa2b498490729f9f9bb71,
+        type: 3}
+      propertyPath: MouseLeave.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224867239662272116, guid: 847876c66cdaa2b498490729f9f9bb71,
         type: 3}
       propertyPath: m_AnchoredPosition.y
