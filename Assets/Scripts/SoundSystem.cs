@@ -23,19 +23,10 @@ public class SoundSystem : MonoBehaviour {
 
     AudioSource audioSource;
     [SerializeField] AudioClip playedMusic;
-    // static SoundSystem instance = null;
 
     public enum PlayListID { Brick, Apple, Boss }
 
-    // Use this for initialization
     void Start() {
-        //if (instance != null && instance != this) {
-        //    print("Destroying duplicate MusicPlayer");
-        //    Destroy(gameObject);
-        //} else {
-        //    instance = this;
-        //    DontDestroyOnLoad(this);
-        //}
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = baseVolume;
         playedMusic = null;
@@ -47,7 +38,12 @@ public class SoundSystem : MonoBehaviour {
         return baseVolume;
     }
 
+    /// <summary>
+    /// Sets volume of AudioSource of the SoundSystem.
+    /// </summary>
+    /// <param name="newVolume">Value of a new volume.</param>
     public void SetVolume(float newVolume) {
+        print("Setting newVolume to: " + newVolume);
         audioSource.volume = newVolume;
     }
 
@@ -71,7 +67,7 @@ public class SoundSystem : MonoBehaviour {
     }
 
     public void musicOnOff() {
-        //print("Toggling music on/off");
+        //print("Toggling music on/off");        
         if (muted) {
             audioSource.volume = baseVolume;
             muted = false;
@@ -79,6 +75,8 @@ public class SoundSystem : MonoBehaviour {
             audioSource.volume = 0f;
             muted = true;
         }
+        print("musicOnOff: Saving Options");
+        FindObjectOfType<Persistance>().SaveOptions();
     }
     public void PlayRandomSoundFromList(PlayListID playListID) {
         AudioClip[] playList = null;

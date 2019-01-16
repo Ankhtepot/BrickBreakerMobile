@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class PaddleMovement : MonoBehaviour
     [SerializeField] Paddle paddle;
 
     [SerializeField] bool Move = false;
-    [SerializeField] bool MoveDirection = true;
+    [SerializeField] bool MoveDirection = true; //True means right, false means left
 
     public void FindAndAssignPaddle() {
         paddle = FindObjectOfType<Paddle>();
@@ -34,8 +35,19 @@ public class PaddleMovement : MonoBehaviour
     }
 
     private void Update() {
-        if(Move) {
-            var movement = paddleTransform.position += new Vector3((MoveDirection ? MovementStep : -MovementStep) * MovementSpeedKeyboard * Time.deltaTime, 0, 0);
+        ProcessMovementOnTouch();
+        ProcessMovementOnArrowPress();
+    }
+
+    private void ProcessMovementOnArrowPress() {
+        if (Input.GetKey(KeyCode.RightArrow)) paddle.transform.position += new Vector3(MovementStep, 0, 0);
+        if (Input.GetKey(KeyCode.LeftArrow)) paddle.transform.position += new Vector3(-MovementStep, 0, 0);
+    }
+
+    private void ProcessMovementOnTouch() {
+        if (Move) {
+            var movement = paddleTransform.position += new Vector3((
+                MoveDirection ? MovementStep : -MovementStep) * MovementSpeedKeyboard * Time.deltaTime, 0, 0);
             var newPos = new Vector3(Mathf.Clamp(movement.x, paddle.leftConstraint, paddle.rightConstraint), movement.y, movement.z);
             paddleTransform.position = newPos;
         }

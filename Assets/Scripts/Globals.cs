@@ -8,7 +8,7 @@ public class Globals : MonoBehaviour {
 
     void Awake() {
         if (instance != null && instance != this) {
-            print("Destroying duplicate Globals");
+            //print("Destroying duplicate Globals");
             gameObject.SetActive(false);
             Destroy(gameObject);
         } else {

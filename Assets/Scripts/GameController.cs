@@ -20,11 +20,9 @@ public class GameController : MonoBehaviour {
     [Header("PlayFieldSetups")]
     [SerializeField] public Vector3 basePaddleBallRelation;
     [SerializeField] bool checkForBricks = true;
-    //[SerializeField] float SplashScreenShowUpDuration = 2f;
     private TextMeshProUGUI LivesText;
     private TextMeshProUGUI ScoreText;
     private GameObject canvas;
-    //[SerializeField] float xMinKe;
     [Header("BallShakerProps")]
     [Range(0, 10)] [SerializeField] float xMin = 3f;
     [Range(0, 10)] [SerializeField] float xMax = 6f;
@@ -34,7 +32,7 @@ public class GameController : MonoBehaviour {
     //Caches
     SceneLoader sceneLoader;
     Options options;
-    PaddleMovement PM;
+    PaddleMovement PM;   
     //static GameSession instance = null;
     bool brickCheckCDIsOff = true;
 
@@ -66,7 +64,7 @@ public class GameController : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneLoadGameSession;
         options = FindObjectOfType<Options>();
         sceneLoader = FindObjectOfType<SceneLoader>();
-        PM = FindObjectOfType<PaddleMovement>();
+        PM = FindObjectOfType<PaddleMovement>();        
     }
 
     private void Update() {
@@ -189,7 +187,7 @@ public class GameController : MonoBehaviour {
         //Debug.Log("GameSession/OnSceneLoad: start");
         if (options) {
             StartCoroutine(DelayGameplay());
-        } else print("GameSession/DelayGameplay: options not found");
+        } else print("OnSceneLoadGameSession/DelayGameplay: options not found");
         if (sceneLoader.isCurrentSceneLevel()) {
             if (canvas) canvas.SetActive(false);
         }
@@ -224,4 +222,6 @@ public class GameController : MonoBehaviour {
             UpdateScoreText();
         } else if (!options) print("GameSession/AddScore: no Options found");
     }
+
+    
 }

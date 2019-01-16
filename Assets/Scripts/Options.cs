@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Options : MonoBehaviour {
 
     [SerializeField] public bool ShowHintBoards = true;
-    [SerializeField] public const int LivesBase = 5;
+    [SerializeField] public const int LivesBase = 1;
     [SerializeField] public int LivesCurrent;
     [SerializeField] int highestLevel = 0;
     [SerializeField] int currentHighestLevel;
@@ -19,6 +19,7 @@ public class Options : MonoBehaviour {
 
     //caches
     SceneLoader sceneLoader;
+    Persistance persistance;
 
     public int HighestLevel {
         get {
@@ -45,6 +46,7 @@ public class Options : MonoBehaviour {
         sceneLoader = FindObjectOfType<SceneLoader>();
         LivesCurrent = LivesBase;
         scoreList = new List<ScoreItem>();
+        persistance = FindObjectOfType<Persistance>();
     }
 
     public void AddScore(int newScore) {
@@ -54,10 +56,12 @@ public class Options : MonoBehaviour {
 
     public void ToggleShowHintBoards() {
         ShowHintBoards = !ShowHintBoards;
+        persistance.SaveOptions();
     }
 
     private void OnScreenLoad(Scene loadedScene, LoadSceneMode mode) {
         ProcessGameData();
+        persistance.SaveAllData();
     }
 
     private void ProcessGameData() {
@@ -68,7 +72,7 @@ public class Options : MonoBehaviour {
     }
 
     private void ProcessLives() {
-        print("Options/OnScreenLoad: setting LivesCurrent to " + LivesBase);
+        //print("Options/OnScreenLoad: setting LivesCurrent to " + LivesBase);
         LivesCurrent = LivesBase;
     }
 
@@ -88,7 +92,7 @@ public class Options : MonoBehaviour {
             }
         }
         if (scoreList.Count == 0 || (scoreList.Count < ScoreItemsCount && !scoreList.Contains(newScore))) {
-            print("Options/ProcessScore: Adding score to first empty position");
+            //print("Options/ProcessScore: Adding score to first empty position");
             scoreList.Add(newScore);
         }
     }
@@ -105,4 +109,13 @@ public class Options : MonoBehaviour {
         SceneManager.sceneLoaded -= OnScreenLoad;
     }
 
+    //enum SaveOptions { saveOnlyOptions, saveAll }
+
+    //private void SaveData(SaveOptions options) {
+    //    if (options == SaveOptions.saveAll) {
+    //        persistance.SaveAllData();
+    //    } else if (options == SaveOptions.saveOnlyOptions) {
+    //        persistance.SaveOptions();
+    //    }
+    //}
 }

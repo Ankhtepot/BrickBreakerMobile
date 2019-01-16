@@ -28,7 +28,7 @@ public class ContinueButton : MonoBehaviour
                 default: levelToGoTo += options.HighestLevel.ToString(); break;
             }
             if (!options) print("SceneLoader/ManageContinueButtonText: missing options");
-            print("SceneLoader/MCBT: targetText: " + levelToGoTo);
+            //print("SceneLoader/MCBT: targetText: " + levelToGoTo);
             targetText.text = levelToGoTo;
         }
     }

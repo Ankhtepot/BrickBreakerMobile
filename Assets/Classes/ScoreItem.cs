@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Assets.Classes {
     public class ScoreItem {
-        public readonly DateTime Date;
-        public readonly int Score;
-        public readonly int HighestLevel;
+        public DateTime Date;
+        public int Score;
+        public int HighestLevel;
         public bool isNewRecord;
 
         public ScoreItem(int score, int hl) {
@@ -15,6 +15,11 @@ namespace Assets.Classes {
             Score = score;
             HighestLevel = hl;
             isNewRecord = true;
+        }
+
+        //Parameterless constructor for ES3
+        public ScoreItem() {
+            isNewRecord = false;
         }
     }
 }

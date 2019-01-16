@@ -63,11 +63,28 @@
     <Compile Include="Assets\Classes\BossAttack.cs" />
     <Compile Include="Assets\Classes\gameobjects.cs" />
     <Compile Include="Assets\Classes\intconstants.cs" />
-    <Compile Include="Assets\Classes\prefs.cs" />
+    <Compile Include="Assets\Classes\persistance.cs" />
     <Compile Include="Assets\Classes\scenes.cs" />
     <Compile Include="Assets\Classes\ScoreItem.cs" />
     <Compile Include="Assets\Classes\tags.cs" />
     <Compile Include="Assets\Classes\triggers.cs" />
+    <Compile Include="Assets\Easy Save 2\ES2Init.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\ES2UniqueID.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\UniqueGameLogic.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\UniqueObjectManager.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Creating an Automatic Save Structure\UniqueSaveManager.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Save and Load Prefabs Instantiated at Runtime\PrefabManager.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Shared Assets\Scripts\MyExampleScript.cs" />
+    <Compile Include="Assets\Easy Save 2\Examples\Upload and Download a Texture\UploadDownloadTexture.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_AudioClip.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_GameObject.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_RawTexture2D.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2_Sprite.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineCanvasRenderer.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineLineRenderer.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineRectTransform.cs" />
+    <Compile Include="Assets\Easy Save 2\Types\ES2UserType_UnityEngineUIText.cs" />
+    <Compile Include="Assets\Easy Save 3\Types\ES3Type_ScoreItem.cs" />
     <Compile Include="Assets\Interfaces\IBoss.cs" />
     <Compile Include="Assets\Interfaces\IBossAttack.cs" />
     <Compile Include="Assets\Interfaces\IBrickPlayList.cs" />
@@ -89,6 +106,7 @@
     <Compile Include="Assets\Scripts\Globals.cs" />
     <Compile Include="Assets\Scripts\GlueActiveEffect.cs" />
     <Compile Include="Assets\Scripts\LaunchingBalls.cs" />
+    <Compile Include="Assets\Scripts\Load.cs" />
     <Compile Include="Assets\Scripts\LoseColider.cs" />
     <Compile Include="Assets\Scripts\MagicBall.cs" />
     <Compile Include="Assets\Scripts\MagicShot.cs" />
@@ -110,6 +128,7 @@
     <Compile Include="Assets\Scripts\Options.cs" />
     <Compile Include="Assets\Scripts\Paddle.cs" />
     <Compile Include="Assets\Scripts\PaddleMovement.cs" />
+    <Compile Include="Assets\Scripts\Persistance.cs" />
     <Compile Include="Assets\Scripts\PhysicalBall.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
     <Compile Include="Assets\Scripts\PickupManager.cs" />
@@ -117,6 +136,7 @@
     <Compile Include="Assets\Scripts\ProgressBar.cs" />
     <Compile Include="Assets\Scripts\ResetLogic.cs" />
     <Compile Include="Assets\Scripts\ResponsiveElementUI.cs" />
+    <Compile Include="Assets\Scripts\Save.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\ScoreBar.cs" />
     <Compile Include="Assets\Scripts\ScoreList.cs" />
@@ -127,13 +147,16 @@
     <Compile Include="Assets\Scripts\Trigger.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Easy Save 2\changelog.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Easy Save 2\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\link.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -718,6 +741,12 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>E:/Unity/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{1B8C44B3-D3ED-3A4A-4463-DF2643C37405}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
