@@ -23,19 +23,26 @@ public class SoundSystem : MonoBehaviour {
 
     AudioSource audioSource;
     [SerializeField] AudioClip playedMusic;
+    [Header("Caches")]
+    [SerializeField] Options options;
 
     public enum PlayListID { Brick, Apple, Boss }
 
     void Start() {
+        options = FindObjectOfType<Options>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = baseVolume;
+        SetMusicOnOff(options.SoundAndMusicOn);
         playedMusic = null;
-        if (GetVolume() != 0) PlayMenuMusic();
+        if (GetBaseVolume() != 0) PlayMenuMusic();
         //print("MusicPlayer is now active");
     }
 
-    public float GetVolume() {
+    public float GetBaseVolume() {
         return baseVolume;
+    }
+
+    public float GetCurrentVolume() {
+        return audioSource.volume;
     }
 
     /// <summary>
@@ -44,7 +51,8 @@ public class SoundSystem : MonoBehaviour {
     /// <param name="newVolume">Value of a new volume.</param>
     public void SetVolume(float newVolume) {
         print("Setting newVolume to: " + newVolume);
-        audioSource.volume = newVolume;
+        if (audioSource) audioSource.volume = newVolume;
+        else if (!audioSource) print("SoundSystem/SetVolume: audioSource is missing");
     }
 
     private void onSceneLoaded(Scene loadedScene, LoadSceneMode mode) {
@@ -66,17 +74,15 @@ public class SoundSystem : MonoBehaviour {
         if (audioSource) audioSource.volume = baseVolume;
     }
 
-    public void musicOnOff() {
+    public void SetMusicOnOff(bool stateTSwitchTo) {
         //print("Toggling music on/off");        
-        if (muted) {
+        if (stateTSwitchTo) {
             audioSource.volume = baseVolume;
             muted = false;
         } else {
             audioSource.volume = 0f;
             muted = true;
-        }
-        print("musicOnOff: Saving Options");
-        FindObjectOfType<Persistance>().SaveOptions();
+        }        
     }
     public void PlayRandomSoundFromList(PlayListID playListID) {
         AudioClip[] playList = null;

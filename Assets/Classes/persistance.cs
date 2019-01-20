@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Assets.Classes {
     public static class persistance {
         public const String HIGHESTLEVEL = "HighestLevel";
-        public const String VOLUME = "Volume";
+        public const String MUSICON = "MusicIsOn";
         public const String SCORE1 = "Score1";
         public const String SCORE2 = "Score2";
         public const String SCORE3 = "Score3";

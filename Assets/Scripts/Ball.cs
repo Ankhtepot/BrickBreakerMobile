@@ -115,7 +115,7 @@ public class Ball : MonoBehaviour {
 
     private void PlaySFX(GameObject objectOfCollision) {
         //Debug.Log("Ball collides with " + collision.gameObject.tag);
-        if (SFXPlayer && SFXPlayer.GetVolume() != 0f && hasStarted) {
+        if (SFXPlayer && SFXPlayer.GetBaseVolume() != 0f && hasStarted) {
             //print("Ball: PlaySFX: collision.tag: " + objectOfCollision.gameObject.tag);
             switch (objectOfCollision.tag) {
                 case tags.UNBREAKABLE: SFXPlayer.PlayClipOnce(unbreakableSound); break;

@@ -8,42 +8,46 @@ public class Load : MonoBehaviour {
 
     [SerializeField] Persistance source;
 
-    private void Start() {
+    private void Awake() {
         source = FindObjectOfType<Persistance>();
     }
 
-    public void LoadAllData() {
+    public OptionsSet LoadAllData() {
         LoadScoreItems();
-        LoadOptions();
+        return LoadOptions();
     }
 
-    private void LoadOptions() {
-        print("Loading options");
-        if (ES3.KeyExists(persistance.VOLUME)) {
-            print("Loading Volume:" + ES3.Load<float>(persistance.VOLUME));
-            source.soundSystem.SetVolume(ES3.Load<float>(persistance.VOLUME));
-        }
+    private OptionsSet LoadOptions() {
+        OptionsSet OS = new OptionsSet();
+
+        //String loadingDataMessage = "Loading options: ";
         if (ES3.KeyExists(persistance.HIGHESTLEVEL)) {
-            print("Loading HIghestLevel: " + ES3.Load<int>(persistance.HIGHESTLEVEL));
-            source.options.HighestLevel = ES3.Load<int>(persistance.HIGHESTLEVEL);
+            //loadingDataMessage += " HighestLevel: " + ES3.Load<int>(persistance.HIGHESTLEVEL);
+            OS.HighestLevel = ES3.Load<int>(persistance.HIGHESTLEVEL);
         }
         if (ES3.KeyExists(persistance.SHOWHINTBOARDS)) {
-            print("Loading ShowHintBoards: " + ES3.Load<bool>(persistance.SHOWHINTBOARDS));
-            source.options.ShowHintBoards = ES3.Load<bool>(persistance.SHOWHINTBOARDS);
+            //loadingDataMessage += " Loading ShowHintBoards: " + ES3.Load<bool>(persistance.SHOWHINTBOARDS);
+            OS.ShowHintBoards = ES3.Load<bool>(persistance.SHOWHINTBOARDS);
         }
+        if (ES3.KeyExists(persistance.MUSICON)) {
+            //loadingDataMessage += " Loading MusicIsOn:" + ES3.Load<bool>(persistance.MUSICON);
+            OS.MusicOn = ES3.Load<bool>(persistance.MUSICON);
+        }
+        //print(OS.ToString());
+        return OS;
     }
 
     private void LoadScoreItems() {
-        print("Loading ScoreItems");
+        //print("Loading ScoreItems");
         String[] scores = { persistance.SCORE1, persistance.SCORE2, persistance.SCORE3,
             persistance.SCORE4, persistance.SCORE5 };
         List<ScoreItem> loadedScoreItems = new List<ScoreItem>();
 
         for (int i = 0; i < scores.Length; i++) {
-            print("Loading ScoreItem: \"" + scores[i] + "\"");
+            //print("Loading ScoreItem: \"" + scores[i] + "\"");
             if (ES3.KeyExists(scores[i])) {
                 loadedScoreItems.Add(ES3.Load<ScoreItem>(scores[i]));
-                print("HighestLevel: " + loadedScoreItems[i].HighestLevel + " Date: " + loadedScoreItems[i].Date + " Score: " + loadedScoreItems[i].Score);
+                //print("HighestLevel: " + loadedScoreItems[i].HighestLevel + " Date: " + loadedScoreItems[i].Date + " Score: " + loadedScoreItems[i].Score);
             }
         }
 

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Assets.Classes {
     public static class gameobjects {
+        public const String BACKGROUND = "Background";
         public const String BIG_APPLE = "BigApple";
         public const String CONTINUE_BUTTON = "ContinueButton";
         public const String EXPLAMATION_LEFT = "exclamationMark Left";

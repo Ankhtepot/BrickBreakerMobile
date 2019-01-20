@@ -18,10 +18,11 @@ public class SceneLoader : MonoBehaviour {
     [SerializeField] int creditsSceneNr;
 
     //Caches
-    Animator splashScreen;
+    Animator splashScreenAnimator;
+    [SerializeField] SplashScreen splashScreen;
     Options options;
     List<string> notLevelScenes = new List<string> {
-        scenes.START, scenes.WIN, scenes.GAME_OVER, scenes.CREDITS
+        scenes.START, scenes.WIN, scenes.GAME_OVER, scenes.CREDITS, scenes.SPLASHSCREEN
     };
     SoundSystem SFXPlayer;
 
@@ -30,17 +31,25 @@ public class SceneLoader : MonoBehaviour {
     }
 
     private void Start() {
-        if (splashScreen) splashScreen = FindObjectOfType<SplashScreen>().GetComponent<Animator>();
+        splashScreen = FindObjectOfType<SplashScreen>();
+        splashScreenAnimator = splashScreen.GetComponent<Animator>();
         SFXPlayer = FindObjectOfType<SoundSystem>();
         options = FindObjectOfType<Options>();
         creditsSceneNr = SceneIndexFromName(scenes.CREDITS);
     }
 
+    /// <summary>
+    /// Loads scene with BuildIndex as current scene +1
+    /// </summary>
     public void LoadScene() {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         FetchLevel(currentSceneIndex + 1);
     }
 
+    /// <summary>
+    /// Loads scene with BuildIndex sceneNr
+    /// </summary>
+    /// <param name="sceneNr"></param>
     public void LoadScene(int sceneNr) {
         FetchLevel(sceneNr);
     }
@@ -48,8 +57,12 @@ public class SceneLoader : MonoBehaviour {
     void FetchLevel(int sceneToBeLoaded) {
         //Debug.Log("SceneLoader/FetchLevel: Loading Screen index: " + (sceneToBeLoaded));
         SceneToBeLoaded = sceneToBeLoaded;
-        if (splashScreen) {
-            splashScreen.SetTrigger(triggers.SHOW_UP);
+        if (splashScreenAnimator) {
+            if (isCurrentSceneName(scenes.SPLASHSCREEN)) {
+                //print("Changing background of the splashScreen to Normal.");
+                splashScreen.SwapBackground(SplashScreen.BackgroundChoice.Normal);
+            }
+            splashScreenAnimator.SetTrigger(triggers.SHOW_UP);
         } else {
             print("SceneLoader/FetchLevel: splashScreen not found, fetching level without animation");
             SceneManager.LoadScene(sceneToBeLoaded);
@@ -57,7 +70,7 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void LoadFirstScene() {
-        LoadScene(0);
+        LoadScene(SceneIndexFromName(scenes.START));
     }
 
     public void QuitApplication() {
@@ -71,13 +84,7 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void LoadCreditsScene() {
-        //Scene currentScreen = SceneManager.GetActiveScene();
-        ////print("SceneLoader/ManageCreditsSceneView: creditsSceneNr: " + creditsSceneNr);
-        //if (currentScreen.name != scenes.CREDITS) {
-        //    sceneToReturnTo = currentScreen.buildIndex;
-            LoadScene(creditsSceneNr);
-        //} else if (currentScreen.name == scenes.CREDITS)
-        //    LoadScene(sceneToReturnTo);
+        LoadScene(creditsSceneNr);
     }
 
     public bool isCurrentSceneLevel() {
@@ -99,13 +106,13 @@ public class SceneLoader : MonoBehaviour {
     }
 
     private void RunSplashScreen() {
-        if (!splashScreen) splashScreen = FindObjectOfType<SplashScreen>().GetComponent<Animator>();
+        if (!splashScreenAnimator) splashScreenAnimator = FindObjectOfType<SplashScreen>().GetComponent<Animator>();
         if (!options) options = FindObjectOfType<Options>();
-        if (splashScreen) {
+        if (splashScreenAnimator) {
             if (options.ShowHintBoards && isCurrentSceneLevel()) {
                 //print("SceneLoader/OnSceneLoad: before CORoutine");
                 StartCoroutine(DelaySplScrFade());
-            } else splashScreen.SetTrigger(triggers.FADE);
+            } else splashScreenAnimator.SetTrigger(triggers.FADE);
         } else print("SceneLoader/OnSceneLoad: No splashScreen found");
     }
 
@@ -113,7 +120,7 @@ public class SceneLoader : MonoBehaviour {
         //print("SceneLoader: DelaySplScrFade - start ");
         yield return new WaitForSeconds(SplashScreenDelay);
         //print("SceneLoader: DelaySplScrFade - delayed " + SplashScreenDelay + "s");
-        splashScreen.SetTrigger(triggers.FADE);
+        splashScreenAnimator.SetTrigger(triggers.FADE);
     }
 
     private string NameFromIndex(int BuildIndex) { ///@Author:  Iamsodarncool/UnityAnswers

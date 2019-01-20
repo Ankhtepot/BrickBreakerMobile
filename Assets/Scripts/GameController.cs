@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour {
                 StartCoroutine(checkBrickCount());
             }
         }
+        if (Input.GetKeyDown(KeyCode.N)) sceneLoader.LoadScene();
     }
 
     private void ScreenShake() {

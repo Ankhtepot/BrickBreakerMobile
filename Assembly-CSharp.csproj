@@ -63,6 +63,7 @@
     <Compile Include="Assets\Classes\BossAttack.cs" />
     <Compile Include="Assets\Classes\gameobjects.cs" />
     <Compile Include="Assets\Classes\intconstants.cs" />
+    <Compile Include="Assets\Classes\optionsSet.cs" />
     <Compile Include="Assets\Classes\persistance.cs" />
     <Compile Include="Assets\Classes\scenes.cs" />
     <Compile Include="Assets\Classes\ScoreItem.cs" />
@@ -144,6 +145,8 @@
     <Compile Include="Assets\Scripts\SmokeEffect.cs" />
     <Compile Include="Assets\Scripts\SoundSystem.cs" />
     <Compile Include="Assets\Scripts\SplashScreen.cs" />
+    <Compile Include="Assets\Scripts\SplashScreenBackground.cs" />
+    <Compile Include="Assets\Scripts\SplashScreenSceneManager.cs" />
     <Compile Include="Assets\Scripts\Trigger.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

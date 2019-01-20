@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Classes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,18 +8,15 @@ public class Persistance : MonoBehaviour
 {
     [SerializeField] Load load;
     [SerializeField] Save save;
-    [SerializeField] public SoundSystem soundSystem;
     [SerializeField] public Options options;
 
     private void Awake() {
         load = GetComponent<Load>();
         save = GetComponent<Save>();
+        options = FindObjectOfType<Options>();
     }
 
     private void Start() {
-        soundSystem = FindObjectOfType<SoundSystem>();
-        options = FindObjectOfType<Options>();
-        load.LoadAllData();
     }
 
     public void SaveAllData() {
@@ -29,7 +27,11 @@ public class Persistance : MonoBehaviour
         save.SaveOptions();
     }
 
-    public void LoadAllData() {
-        load.LoadAllData();
+    public void SaveScores() {
+        save.SaveScoreItems();
+    }
+
+    public OptionsSet LoadAllData() {
+        return load.LoadAllData();
     }
 }

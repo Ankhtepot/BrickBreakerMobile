@@ -10,6 +10,7 @@ namespace Assets.Classes {
         public static String GAME_OVER = "Game Over";
         public static String MRBRICKWORM = "Mr Brickworm";
         public static String MRBRICKWORMLEVEL = "L8 Apple 2 boss";
+        public static String SPLASHSCREEN = "SplashScreen";
         public static String START = "Start Screen";
         public static String WIN = "Win Screen";
     }

@@ -4,17 +4,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour {
 
     [SerializeField] List<GameObject> messageBoards;
+    [SerializeField] Image SSB;
+    [SerializeField] Sprite NormalSS;
+    [SerializeField] Sprite LogoSS;
 
     //cache
     MessageBoard chosenMessageBoard = null;
 
-    private void Start() {
-        SceneManager.sceneLoaded += OnSceneLoadMessageBoard;
-    }
 
     void triggerNextLevel() {
         SceneLoader SL = FindObjectOfType<SceneLoader>();
@@ -37,11 +38,21 @@ public class SplashScreen : MonoBehaviour {
             board.GetComponentInChildren<MessageBoard>().isActive = false;
     }
 
-    void OnSceneLoadMessageBoard(Scene loadedScene, LoadSceneMode mode) {
-
+    public enum BackgroundChoice {Logo, Normal };
+    public void SwapBackground(BackgroundChoice background) {
+        if (background == BackgroundChoice.Logo) SSB.GetComponent<Image>().sprite = LogoSS;
+        if (background == BackgroundChoice.Normal) SSB.GetComponent<Image>().sprite = NormalSS;
     }
 
-    private void OnDisable() {
-        SceneManager.sceneLoaded -= OnSceneLoadMessageBoard;
-    }
+    //private void Start() {
+    //    SceneManager.sceneLoaded += OnSceneLoadMessageBoard;
+    //}
+
+    //void OnSceneLoadMessageBoard(Scene loadedScene, LoadSceneMode mode) {
+
+    //}
+
+    //private void OnDisable() {
+    //    SceneManager.sceneLoaded -= OnSceneLoadMessageBoard;
+    //}
 }

@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1462272514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462272517}
+  - component: {fileID: 1462272518}
+  - component: {fileID: 1462272516}
+  - component: {fileID: 1462272515}
+  m_Layer: 0
+  m_Name: Persistance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1462272517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462272514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4627310737188054}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1462272518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462272514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a30adecc6cb3f4a89bbc81f86ff34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  load: {fileID: 0}
+  save: {fileID: 0}
+  soundSystem: {fileID: 0}
+  options: {fileID: 0}
+--- !u!114 &1462272516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462272514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85186a8588558e5429406cfb5f3eae50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
+--- !u!114 &1462272515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462272514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d329dbc4a79b6dc41b075c557d521aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
 --- !u!1 &1037905338593386
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +518,9 @@ MonoBehaviour:
   - {fileID: 1176178143458614}
   - {fileID: 1373524946701466}
   - {fileID: 1309174050209430}
+  SSB: {fileID: 114293633470150958}
+  NormalSS: {fileID: 21300000, guid: d63fdfa573c52294fb33dc2dba641fcd, type: 3}
+  LogoSS: {fileID: 21300000, guid: 3141b020c0c78e14ea3dd79465795b5e, type: 3}
 --- !u!223 &223321866352396506
 Canvas:
   m_ObjectHideFlags: 0
@@ -1981,6 +2059,7 @@ Transform:
   - {fileID: 4279960859795302}
   - {fileID: 224101219874876572}
   - {fileID: 4826542965228576}
+  - {fileID: 1462272517}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4708,7 +4787,8 @@ MonoBehaviour:
   SceneToBeLoaded: 0
   SplashScreenDelay: 2
   SplScrProlongOffset: 0.5
-  continueButton: {fileID: 0}
+  creditsSceneNr: 0
+  splashScreen: {fileID: 114476404366097958}
 --- !u!1 &1951659445651106
 GameObject:
   m_ObjectHideFlags: 0
