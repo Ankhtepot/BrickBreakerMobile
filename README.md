@@ -17,5 +17,10 @@ What can be done in BrickBreaker?
     - Glue - this pickup drops gluey layer on a paddle, allowing you to shoot more precise and without stress.
     - Multiplier - Every ball gets multiplied (to some extend) to help swipe the level fater.
     
-Adition to normal arkanoid games, you can shake the balls randomly by pressing button in the left upper corner. It can be used if ball gets slow, or you would wait ages for it, or simply want to gamble and hope, that ball will change direction where you want. And it does often!    
+As adition to normal arkanoid games, you can shake the balls randomly by pressing button in the left upper corner. It can be used if ball gets slow, or you would wait ages for it, or simply want to gamble and hope, that ball will change direction where you want. And it does often!    
 
+Another addition is possibility to continue to last reached level, so you dont have to play from the beginning. You get less score this way, of course.
+
+ Score system in BrickBreaker is made, so with more lifes, you get more score. So if you play good from the beginning till the end, you get a lot of point. If you continue and lose lots of lifes, your score wont be probably very good :) Score is saved so you can see you progress.
+ 
+  But most important is - have fun! :)
